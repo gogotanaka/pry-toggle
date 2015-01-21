@@ -1,7 +1,7 @@
 require 'minitest_helper'
 require 'pry'
 class TestPryToggle < MiniTest::Unit::TestCase
-  def test_general
+  def test_insert_by_line_num
     test_file_path = "./test/test_files/test.rb"
     File.open(test_file_path, 'w') do |t|
       10.times { t << "test\n" }
@@ -15,7 +15,23 @@ class TestPryToggle < MiniTest::Unit::TestCase
     FileUtils.rm(test_file_path)
   end
 
-  def test_general
+  def test_remove_by_line_num
+    test_file_path = "./test/test_files/test.rb"
+    File.open(test_file_path, 'w') do |t|
+      5.times { t << "test\n" }
+      t << "binding.pry\n"
+      5.times { t << "test\n" }
+    end
+
+    service = PryToggle::Service.new(test_file_path, nil, '', "binding.pry\n")
+    service.execute
+
+    assert_equal "test\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\n", File.open(test_file_path, 'r').read
+
+    FileUtils.rm(test_file_path)
+  end
+
+  def test_insert_by_mth_name
     test_file_path = "./test/test_files/test.rb"
     File.open(test_file_path, 'w') do |t|
       5.times { t << "test\n" }

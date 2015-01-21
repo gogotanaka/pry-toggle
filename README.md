@@ -15,6 +15,18 @@
 ![Screenshot 2015-01-20 22.23.51.png](https://qiita-image-store.s3.amazonaws.com/0/30440/3e0c95d7-bbbb-70ce-304d-dedec016e6c7.png)
 
 
+### 4. Fix something.
+
+### 5. Remove breakpoit `binding.pry` by running `pry-tgl`
+
+    $ pry-toggle main.rb
+
+or
+
+    $ pry-toggle main.rb:9
+
+
+
 ## Installation
 
 Install it yourself as:
@@ -33,13 +45,15 @@ And then execute:
 
     $ bundle
 
-## Contributing
+## Develop
 
-1. Fork it ( https://github.com/[my-github-username]/pry-toggle/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+### Bundle install
 
-### Test
+    $ bundle install --path vendor/bundle
+
+### Run test
     $ bundle exec rake
+
+
+### Try local
+    $ bundle exec pry-tgl main;.rb:10
