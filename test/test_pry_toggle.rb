@@ -14,4 +14,20 @@ class TestPryToggle < MiniTest::Unit::TestCase
 
     FileUtils.rm(test_file_path)
   end
+
+  def test_general
+    test_file_path = "./test/test_files/test.rb"
+    test_file = File.open(test_file_path, 'w')
+    5.times { test_file << "test\n" }
+    test_file << "def test_method\n"
+    5.times { test_file << "test\n" }
+    test_file.close
+
+    service = PryToggle::Service.new(test_file_path, nil, "test_method", "binding.pry\n")
+    service.execute
+
+    assert_equal "test\ntest\ntest\ntest\ntest\ndef test_method\nbinding.pry\ntest\ntest\ntest\ntest\ntest\n", File.open(test_file_path, 'r').read
+
+    FileUtils.rm(test_file_path)
+  end
 end
