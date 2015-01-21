@@ -3,12 +3,12 @@
 ## Basic Usage
 ### 1. Error happens ;(
 
-    main.rb:9:in `initialize': undefined local variable or
+    example.rb:9:in `initialize': undefined local variable or
     method `get_value'
 
 #### 2. Run `pry-on` to set breakpoit
 
-    $ pry-on main.rb:9
+    $ pry-on example.rb:9
 
 ### 3. Execute again
 
@@ -19,11 +19,11 @@
 
 ### 5. Remove breakpoit `binding.pry` by running `pry-off`
 
-    $ pry-off main.rb
+    $ pry-off example.rb
 
 or
 
-    $ pry-off main.rb:9
+    $ pry-off example.rb:9
 
 
 

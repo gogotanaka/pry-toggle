@@ -9,12 +9,12 @@ module PryToggle
         if hash[:on]
           puts <<-DOC
 === Invalid command format. should be like that. ===
-$ pry-on exmain.rb:10
+$ pry-on example.rb:10
           DOC
         else
           puts <<-DOC
 === Invalid command format. should be like that. ===
-$ pry-off exmain.rb:10
+$ pry-off example.rb:10
           DOC
         end
 
