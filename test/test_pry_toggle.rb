@@ -6,6 +6,7 @@ class TestPryToggle < MiniTest::Unit::TestCase
     test_file = File.open(test_file_path, 'w')
     10.times { test_file << "test\n" }
     test_file.close
+
     service = PryToggle::Service.new(test_file_path, 5, '', "binding.pry\n")
     service.execute
 
