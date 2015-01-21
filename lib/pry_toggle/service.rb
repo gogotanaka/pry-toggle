@@ -5,16 +5,14 @@ module PryToggle
 
     def execute
       fail '' unless origin_path
-      tempfile = File.open(tmp_file_path, 'w')
-      f = File.open(abs_file_path, 'r')
-      f.each.with_index(1) do |line, i|
-        tempfile << line
-        if i == line_num
-          tempfile << str
+      File.open(tmp_file_path, 'w') do |d|
+        File.open(abs_file_path, 'r') do |o|
+          o.each.with_index(1) do |line, i|
+            d << str if i == line_num
+            d << line
+          end
         end
       end
-      f.close
-      tempfile.close
 
       FileUtils.mv(tmp_file_path, abs_file_path)
     end

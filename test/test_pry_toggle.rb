@@ -7,7 +7,7 @@ class TestPryToggle < MiniTest::Unit::TestCase
     10.times { test_file << "test\n" }
     test_file.close
 
-    service = PryToggle::Service.new(test_file_path, 5, '', "binding.pry\n")
+    service = PryToggle::Service.new(test_file_path, 6, '', "binding.pry\n")
     service.execute
 
     assert_equal "test\ntest\ntest\ntest\ntest\nbinding.pry\ntest\ntest\ntest\ntest\ntest\n", File.open(test_file_path, 'r').read
