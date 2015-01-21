@@ -4,8 +4,6 @@ module PryToggle
   class Service < ::Struct.new(:origin_path, :line_num, :mth_name, :str)
 
     def execute
-      fail '' unless origin_path
-
       File.open(tmp_file_path, 'w') do |d|
         File.open(abs_file_path, 'r') do |o|
           o.each.with_index(1) do |line, i|
