@@ -1,29 +1,29 @@
 # pry-toggle
 
-## Usage
+## Basic Usage
 ### 1. Error happens ;(
 
     main.rb:9:in `initialize': undefined local variable or
     method `get_value'
 
-#### 2. Run `pry-toggle` or `pry-tgl` (aliased to `pry-toggle`)
+#### 2. Run `pry-on` to set breakpoit
 
-    $ pry-toggle main.rb:9
+    $ pry-on main.rb:9
 
 ### 3. Execute again
 
 ![Screenshot 2015-01-20 22.23.51.png](https://qiita-image-store.s3.amazonaws.com/0/30440/3e0c95d7-bbbb-70ce-304d-dedec016e6c7.png)
 
 
-### 4. Fix something.
+### 4. Fix something
 
-### 5. Remove breakpoit `binding.pry` by running `pry-tgl`
+### 5. Remove breakpoit `binding.pry` by running `pry-off`
 
-    $ pry-toggle main.rb
+    $ pry-off main.rb
 
 or
 
-    $ pry-toggle main.rb:9
+    $ pry-off main.rb:9
 
 
 
@@ -44,6 +44,28 @@ gem 'pry-toggle'
 And then execute:
 
     $ bundle
+
+## Doc
+
+### pry-on
+
+    $ pry-on main.rb:9
+
+    $ pry-on main.rb -9
+
+    $ pry-on -9 main.rb
+
+### pry-off
+
+    $ pry-off main.rb:9
+
+    $ pry-off main.rb -9
+
+    $ pry-off -9 main.rb
+
+Remove all breakpoint in a file.
+
+    $ pry-off main.rb
 
 ## Develop
 

@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = Dir['lib/**/*', 'bin/*', 'test/**/*']
-  spec.executables   = ['pry-tgl', 'pry-toggle']
+  spec.executables   = ['pry-on', 'pry-off']
   spec.test_files    = Dir["test/**/*_test.rb"]
   spec.require_paths = ["lib"]
 
