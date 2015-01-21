@@ -10,7 +10,7 @@ module PryToggle
             o.each.with_index(1) do |line, i|
               d << str if i == line_num
               d << line
-              d << str if line =~ %r|def( +)#{mth_name}|
+              # d << str if line =~ %r|def( +)#{mth_name}|
             end
           else
             o.each.with_index(1) do |line, i|
