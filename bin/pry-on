@@ -3,5 +3,5 @@
 $LOAD_PATH.unshift File.dirname(__FILE__) + '/../lib'
 require 'pry_toggle/exec'
 
-opts = PryToggle::Exec.new(ARGV)
+opts = PryToggle::Exec.new(ARGV, on: true)
 opts.execute! if opts.executable?

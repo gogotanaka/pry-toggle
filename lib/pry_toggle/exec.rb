@@ -2,18 +2,23 @@ require 'pry_toggle'
 
 module PryToggle
   class Exec
-    def initialize(args)
+    def initialize(args, hash)
       if args.first =~ /\A(.+):(\d+?)\z/
-        @service = PryToggle::Service.new($1, $2.to_i, '', "binding.pry\n")
+        @service = PryToggle::Service.new($1, $2.to_i, '', "binding.pry\n", hash[:on])
       else
-        puts <<-DOC
-=== Format should be ===
-$ pry-tgl exmain.rb:10
+        if hash[:on]
+          puts <<-DOC
+=== Invalid command format. should be like that. ===
+$ pry-on exmain.rb:10
+          DOC
+        else
+          puts <<-DOC
+=== Invalid command format. should be like that. ===
+$ pry-off exmain.rb:10
+          DOC
+        end
 
-         OR
 
-$ pry-tgl exmain.rb#method_name
-        DOC
       end
     end
 

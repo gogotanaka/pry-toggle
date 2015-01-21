@@ -1,18 +1,21 @@
 require 'fileutils'
 
 module PryToggle
-  class Service < ::Struct.new(:origin_path, :line_num, :mth_name, :str)
+  class Service < ::Struct.new(:origin_path, :line_num, :mth_name, :str, :on)
 
     def execute
       File.open(tmp_file_path, 'w') do |d|
         File.open(abs_file_path, 'r') do |o|
-          o.each.with_index(1) do |line, i|
-            if (line == str)
-            else
+          if on
+            o.each.with_index(1) do |line, i|
               d << str if i == line_num
               d << line
+              d << str if line =~ %r|def( +)#{mth_name}|
             end
-            d << str if line =~ %r|def( +)#{mth_name}|
+          else
+            o.each.with_index(1) do |line, i|
+              d << line unless (i == line_num || line_num.nil?) && line == str
+            end
           end
         end
       end

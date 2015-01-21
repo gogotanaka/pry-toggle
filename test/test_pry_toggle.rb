@@ -7,7 +7,7 @@ class TestPryToggle < MiniTest::Unit::TestCase
       10.times { t << "test\n" }
     end
 
-    service = PryToggle::Service.new(test_file_path, 6, '', "binding.pry\n")
+    service = PryToggle::Service.new(test_file_path, 6, '', "binding.pry\n", true)
     service.execute
 
     assert_equal "test\ntest\ntest\ntest\ntest\nbinding.pry\ntest\ntest\ntest\ntest\ntest\n", File.open(test_file_path, 'r').read
@@ -23,7 +23,7 @@ class TestPryToggle < MiniTest::Unit::TestCase
       5.times { t << "test\n" }
     end
 
-    service = PryToggle::Service.new(test_file_path, nil, '', "binding.pry\n")
+    service = PryToggle::Service.new(test_file_path, nil, '', "binding.pry\n", false)
     service.execute
 
     assert_equal "test\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\n", File.open(test_file_path, 'r').read
@@ -39,7 +39,7 @@ class TestPryToggle < MiniTest::Unit::TestCase
       5.times { t << "test\n" }
     end
 
-    service = PryToggle::Service.new(test_file_path, nil, "test_method", "binding.pry\n")
+    service = PryToggle::Service.new(test_file_path, nil, "test_method", "binding.pry\n", true)
     service.execute
 
     assert_equal "test\ntest\ntest\ntest\ntest\ndef test_method\nbinding.pry\ntest\ntest\ntest\ntest\ntest\n", File.open(test_file_path, 'r').read
