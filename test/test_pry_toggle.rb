@@ -3,9 +3,9 @@ require 'pry'
 class TestPryToggle < MiniTest::Unit::TestCase
   def test_general
     test_file_path = "./test/test_files/test.rb"
-    test_file = File.open(test_file_path, 'w')
-    10.times { test_file << "test\n" }
-    test_file.close
+    File.open(test_file_path, 'w') do |t|
+      10.times { t << "test\n" }
+    end
 
     service = PryToggle::Service.new(test_file_path, 6, '', "binding.pry\n")
     service.execute
@@ -17,11 +17,11 @@ class TestPryToggle < MiniTest::Unit::TestCase
 
   def test_general
     test_file_path = "./test/test_files/test.rb"
-    test_file = File.open(test_file_path, 'w')
-    5.times { test_file << "test\n" }
-    test_file << "def test_method\n"
-    5.times { test_file << "test\n" }
-    test_file.close
+    File.open(test_file_path, 'w') do |t|
+      5.times { t << "test\n" }
+      t << "def test_method\n"
+      5.times { t << "test\n" }
+    end
 
     service = PryToggle::Service.new(test_file_path, nil, "test_method", "binding.pry\n")
     service.execute
