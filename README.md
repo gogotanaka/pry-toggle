@@ -6,11 +6,11 @@
     example.rb:9:in `initialize': undefined local variable or
     method `get_value'
 
-#### 2. Run `pry-on` to set breakpoit
+#### 2. Run `pry-on` to set breakpoint
 
     $ pry-on example.rb:9
 
-### 3. Execute again
+### 3. Run again
 
 ![Screenshot 2015-01-20 22.23.51.png](https://qiita-image-store.s3.amazonaws.com/0/30440/3e0c95d7-bbbb-70ce-304d-dedec016e6c7.png)
 
@@ -45,27 +45,17 @@ And then execute:
 
     $ bundle
 
-## Doc
+## Future Work
 
-### pry-on
+### toggle by method
 
-    $ pry-on main.rb:9
+    $ pry-on main.rb#hoge
 
-    $ pry-on main.rb -9
+### run and binding automatically.
 
-    $ pry-on -9 main.rb
+If only raising error, toggle `binding.pry` and run again.
 
-### pry-off
-
-    $ pry-off main.rb:9
-
-    $ pry-off main.rb -9
-
-    $ pry-off -9 main.rb
-
-Remove all breakpoint in a file.
-
-    $ pry-off main.rb
+    $ pry-run main.rb
 
 ## Develop
 
@@ -78,4 +68,4 @@ Remove all breakpoint in a file.
 
 
 ### Try local
-    $ bundle exec pry-tgl main;.rb:10
+    $ bundle exec pry-on main.rb:10
